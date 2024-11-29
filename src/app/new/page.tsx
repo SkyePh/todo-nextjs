@@ -11,7 +11,12 @@ async function createToDo(data: FormData) {
         throw new Error("Invalid Title")
     }
 
-    await prisma.todo.create({ data: { title, complete: false}})
+    const description = data.get("description")?.valueOf()
+    if (typeof description !== "string") {
+        throw new Error("Invalid Description")
+    }
+
+    await prisma.todo.create({ data: { title, description, complete: false}})
 
     redirect("/")
 
@@ -28,6 +33,13 @@ export default function newPost() {
                     type="text"
                     name="title"
                     placeholder="Title"
+                    className="border border-slate-400 bg-transparent
+                    rounded px-2 py-1 outline-none focus-within:border-slate-100"
+                />
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Description"
                     className="border border-slate-400 bg-transparent
                     rounded px-2 py-1 outline-none focus-within:border-slate-100"
                 />

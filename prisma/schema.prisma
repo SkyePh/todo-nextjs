@@ -13,6 +13,7 @@ datasource db {
 model todo {
   id String @id @default(uuid())
   title String
+  description String
   complete Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
