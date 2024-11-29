@@ -1,5 +1,7 @@
+//execute this whole file client side
 "use client"
 
+//this is why i love typescript
 type TodoItemProps = {
     id: string;
     title: string;
@@ -8,6 +10,7 @@ type TodoItemProps = {
     toggleTodo: (id: string, complete: boolean) => void
 }
 
+//why is toggleTodo error?? i dont know
 export function TodoItem({ id, title, description, complete, toggleTodo }: TodoItemProps) {
     return (
         <li className='flex flex-col gap-1 items-start'>

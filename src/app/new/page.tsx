@@ -1,3 +1,5 @@
+//new post page
+
 import Link from "next/link";
 import {prisma} from "@/db";
 import {redirect} from "next/navigation";
@@ -6,11 +8,15 @@ import {redirect} from "next/navigation";
 async function createToDo(data: FormData) {
     "use server" //this means its server code
 
+
+    //TODO ????? what is this error i dont get it??!!1!
     const title = data.get("title")?.valueOf()
     if (typeof title !== "string" || title.length === 0) {
         throw new Error("Invalid Title")
     }
 
+
+    //again this error?!!
     const description = data.get("description")?.valueOf()
     if (typeof description !== "string") {
         throw new Error("Invalid Description")
@@ -22,6 +28,7 @@ async function createToDo(data: FormData) {
 
 }
 
+//create new post
 export default function newPost() {
     return (
         <>
